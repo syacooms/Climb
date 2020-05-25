@@ -1,7 +1,7 @@
 프로그래밍 언어 배워보기
 =========================
 
-# 1. JAVA (**공부해봅시다.**)
+# 1. JAVA (**언어**)
 
 -------------------------
 
@@ -16,7 +16,7 @@
 <code>
 public class Main {
   public static void main(String[] args) {
-    System.out.println(" 마크다운문법 자바보자. ");
+    System.out.println(" 마크다운. ");
   }
 }
 </code>

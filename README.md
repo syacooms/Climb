@@ -16,7 +16,7 @@
 <code>
 public class Main {
   public static void main(String[] args) {
-    System.out.println(" 마크다운. ");
+    System.out.println(" 2차전직 ");
   }
 }
 </code>

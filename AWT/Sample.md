@@ -1,7 +1,6 @@
 Abstract Window Toolkit
 ============================================
-  Applicatin -> App
-		 	
+ 		        Applicatin -> App
 		 	자동화 기능 -> Application(C#)
 		 	Web -> editor
 		 	
@@ -18,8 +17,7 @@ Abstract Window Toolkit
 >>신기함. 필요에 따라 인터페이스를 다중상속받기도 한다.
   
   
-  public class WindowTest extends Frame implements WindowListener{
-	
+     public class WindowTest extends Frame implements WindowListener{
 	public WindowTest() {
 	
 		setSize(640, 480); // 윈도우 폭, 높이
@@ -82,8 +80,8 @@ Abstract Window Toolkit
     }
     
 -------------------------------------------------------
-public static void main(String[] args) {
-	
-		new WindowTestJ();
+        
+	public static void main(String[] args) {
+ 		  new WindowTestJ();
 	}
 

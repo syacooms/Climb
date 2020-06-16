@@ -17,7 +17,10 @@
 * [__poiemaweb__](https://poiemaweb.com/)
 
 
-1.2 **MarkDown 문법도 익혀보기.**
+
+------------------------
+
+**MarkDown 문법도 익혀보기.**
 
 <pre>
 <code>

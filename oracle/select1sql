@@ -1,0 +1,56 @@
+-- DML INSERT DELETE SELECT(90%) UPDATE
+/*
+    Query
+    
+    Database : 데이터 관리 -> Server
+               File -> ArrayList
+               홍길동-24-181.1
+               
+    
+    SELECT 
+    (값, COLUMN(항목), 함수, SUB QUERY)
+    FROM
+        (TABLE명, SUB QUERY)
+    
+
+*/
+SELECT 1 FROM DUAL;
+
+SELECT * FROM EMP;  --> ALL 테이블
+
+-- 현재 계정의 테이블을 모두 명세
+SELECT * FROM TAB;  --> 스키마가 가지고 있는 모든 테이블을 보여준다.
+
+
+-- 테이블에서 원하는 컬럼의 값만을 명세
+SELECT empno, ename, sal
+FROM emp;
+
+SELECT empno, ename, sal, sal+300
+FROM emp;
+
+SELECT empno, ename, sal, sal * 12
+FROM emp;
+
+-- alias        int alias[] = array;    alias[0] = 11;
+SELECT empno AS 사원번호, sal AS "월급" , SAL * 12 "1년치연봉"
+FROM emp;
+
+
+-- 연결 연산자 ||    사원이름의 월급은 ? 입니다.
+SELECT ename || '의 월급은' || sal || '입니다.' AS "이름 + 월급"
+FROM emp;
+-- 출력 아무개씨의 월급은 1000 입니다.
+
+-- DISTINCT : 중복행의 삭제 -- gruop by
+SELECT DISTINCT job
+FROM emp;
+
+-- DESC : TABLE의 COLUMN들을 명세
+DESC emp;
+
+SELECT NVL (sal,0)
+FROM emp;
+-- NVL (컬럼명, 원하는 값)
+--      컬럼이 null이 아니면 컬럼의 값을 출력. null이면 원하는 값.
+

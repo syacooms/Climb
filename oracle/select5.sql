@@ -1,13 +1,11 @@
 -- SUB Query
--- Query¾ÈÀÇ Query
--- ÇÑ°³ÀÇ Çà(row)¿¡¼­ °á°ú °ªÀÌ ¹İÈ¯µÇ´Â Query
+-- Queryì•ˆì˜ Query
+-- í•œê°œì˜ í–‰(row)ì—ì„œ ê²°ê³¼ ê°’ì´ ë°˜í™˜ë˜ëŠ” Query
 
 /*
-    SELECT ´ÜÀÏ ROW ´ÜÀÏ COLUMN (»êÃâµÇ´Â µ¥ÀÌÅÍ°¡ ÇÑ°³, ÄÃ·³µµ ÇÑ°³)
-    FROM   ´ÙÁß ROW ´ÙÁß COLUMN
-    WHERE  ´ÙÁß ROW ´ÙÁß COLUMN
-    
-    
+    SELECT ë‹¨ì¼ ROW ë‹¨ì¼ COLUMN (ì‚°ì¶œë˜ëŠ” ë°ì´í„°ê°€ í•œê°œ, ì»¬ëŸ¼ë„ í•œê°œ)
+    FROM   ë‹¤ì¤‘ ROW ë‹¤ì¤‘ COLUMN
+    WHERE  ë‹¤ì¤‘ ROW ë‹¤ì¤‘ COLUMN  
 */
 
 --SELECT
@@ -24,7 +22,7 @@ FROM (SELECT employee_id, first_name, last_name
         FROM employees
         where department_id = 20);
 
--- ºÎ¼­¹øÈ£°¡ 20¹ø, ±Ş¿©°¡ 6000ÀÌ»óÀÎ »ç¿ø
+-- ë¶€ì„œë²ˆí˜¸ê°€ 20ë²ˆ, ê¸‰ì—¬ê°€ 6000ì´ìƒì¸ ì‚¬ì›
 SELECT
     *
 FROM employees
@@ -37,7 +35,7 @@ FROM ( SELECT EMPLOYEE_id, salary
         WHERE department_id = 50) e
 WHERE salary >= 6000;
 
--- ±Ş¿©ÀÇ ÇÕ°è, ÀÎ¿ø¼ö, »ç¿ø¸í, ¿ù±Ş
+-- ê¸‰ì—¬ì˜ í•©ê³„, ì¸ì›ìˆ˜, ì‚¬ì›ëª…, ì›”ê¸‰
 /*
 SELECT job_id, COUNT(*)
 FROM employees
@@ -46,8 +44,8 @@ GROUP BY job_id;
 
 SELECT e.employee_id, e.salary,
     e.job_id, j.job_id,
-    j."±Ş¿©ÇÕ°è", j."ÀÎ¿ø¼ö"
-FROM employees e, (SELECT job_id, SUM(salary) as "±Ş¿©ÇÕ°è" , count(*) as "ÀÎ¿ø¼ö"
+    j."ê¸‰ì—¬í•©ê³„", j."ì¸ì›ìˆ˜"
+FROM employees e, (SELECT job_id, SUM(salary) as "ê¸‰ì—¬í•©ê³„" , count(*) as "ì¸ì›ìˆ˜"
                     from employees
                     GROUP by job_id) j
 WHERE e.job_id = j.job_id;
@@ -57,21 +55,21 @@ SELECT first_name, salary
 FROM employees
 WHERE salary > (SELECT AVG(salary) FROM employees);
 
---department_id = 90ÀÇ job_id¸¸ »êÃâ
+--department_id = 90ì˜ job_idë§Œ ì‚°ì¶œ
 SELECT job_id, first_name, department_id
 FROM employees
 WHERE job_id IN(SELECT job_id
                 FROM employees
                 WHERE department_id = 90);
                 
--- ºÎ¼­º°·Î °¡Àå ±Ş¿©¸¦ Àû°Ô ¹Ş´Â »ç¿ø°ú °°Àº ±Ş¿©¸¦ ¹Ş´Â »ç¿ø
+-- ë¶€ì„œë³„ë¡œ ê°€ì¥ ê¸‰ì—¬ë¥¼ ì ê²Œ ë°›ëŠ” ì‚¬ì›ê³¼ ê°™ì€ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›
 SELECT first_name, salary, department_id
 FROM employees
 WHERE salary IN ( SELECT MIN(salary)
                   FROM employees
                   GROUP BY department_id);
                   
--- ºÎ¼­º°·Î °¡Àå ±Ş¿©¸¦ Àû°Ô ¹Ş´Â »ç¿ø°ú ±Ş¿©
+-- ë¶€ì„œë³„ë¡œ ê°€ì¥ ê¸‰ì—¬ë¥¼ ì ê²Œ ë°›ëŠ” ì‚¬ì›ê³¼ ê¸‰ì—¬
 SELECT department_id, first_name, salary
 FROM employees
 WHERE (department_id, salary) in (select department_id, MIN(salary)

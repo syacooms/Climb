@@ -83,3 +83,4 @@ FROM employees a, employees b
 WHERE a.manager_id = b.employee_id(+)
 -- CONNECT BY PRIOR a.manager_id = a.employee_id;  -- 상향식
 CONNECT BY a.manager_id = PRIOR a.employee_id;  -- 하향식
+

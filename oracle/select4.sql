@@ -1,19 +1,19 @@
 /*
     JOIN
-    µÎ°³ ÀÌ»óÀÇ Å×ÀÌºíÀ» ¿¬°áÇØ¼­ µ¥ÀÌÅÍ¸¦ °Ë»öÇÏ´Â ¹æ¹ıÀÌ´Ù.
-    º¸Åë µÎ°³ÀÌ»óÀÇ Çà(row)µéÀÇ °øÅëµÈ °ª Primary Key(±âº» Å°), Foreing key(¿Ü·¡ Å°)°ªÀ»
-    »ç¿ëÇØ¼­ Á¶ÀÎÇÑ´Ù.
+    ë‘ê°œ ì´ìƒì˜ í…Œì´ë¸”ì„ ì—°ê²°í•´ì„œ ë°ì´í„°ë¥¼ ê²€ìƒ‰í•˜ëŠ” ë°©ë²•ì´ë‹¤.
+    ë³´í†µ ë‘ê°œì´ìƒì˜ í–‰(row)ë“¤ì˜ ê³µí†µëœ ê°’ Primary Key(ê¸°ë³¸ í‚¤), Foreing key(ì™¸ë˜ í‚¤)ê°’ì„
+    ì‚¬ìš©í•´ì„œ ì¡°ì¸í•œë‹¤.
     
-    Primary Key(±âº» Å°) : Å×ÀÌºí¿¡¼­ Áßº¹µÇÁö ¾Ê´Â Å°
-    Foreing Key(¿Ü·¡ Å°) : ´Ù¸¥ Å×ÀÌºí¿¡¼­ PK, UK ÀÎ °æ¿ì°¡ ¸¹´Ù.
+    Primary Key(ê¸°ë³¸ í‚¤) : í…Œì´ë¸”ì—ì„œ ì¤‘ë³µë˜ì§€ ì•ŠëŠ” í‚¤
+    Foreing Key(ì™¸ë˜ í‚¤) : ë‹¤ë¥¸ í…Œì´ë¸”ì—ì„œ PK, UK ì¸ ê²½ìš°ê°€ ë§ë‹¤.
     
-    inner JOIN : ±³ÁıÇÕ    ¹Ì½¶·© 5¼º
-    full outer JOIN -- ¾µÀÏ ¾øÀ½.
-    cross JOIN -- ¾µÀÏ ¾øÀ½.
+    inner JOIN : êµì§‘í•©    ë¯¸ìŠë­ 5ì„±
+    full outer JOIN -- ì“¸ì¼ ì—†ìŒ.
+    cross JOIN -- ì“¸ì¼ ì—†ìŒ.
     outer 
-            left        ¹Ì½¶·© 3¼º
-            right       ¹Ì½¶·© 3¼º
-    self JOIN : °°Àº Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ »êÃâ     ¹Ì½¶·© 5¼º
+            left        ë¯¸ìŠë­ 3ì„±
+            right       ë¯¸ìŠë­ 3ì„±
+    self JOIN : ê°™ì€ í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ì‚°ì¶œ     ë¯¸ìŠë­ 5ì„±
 */
 
 -- inner JOIN
@@ -68,18 +68,18 @@ d.department_name
 FROM employees e, departments d
 WHERE e.department_id(+) = d.department_id;
     
--- self join : µ¿ÀÏÇÑ Å×ÀÌºíÀ» JOIN
+-- self join : ë™ì¼í•œ í…Œì´ë¸”ì„ JOIN
 SELECT a.employee_id, a.first_name,
     a.manager_id, b.employee_id,
     b.first_name
-FROM employees a, employees b   -- a : »ç¿ø b : »ó»ç
+FROM employees a, employees b   -- a : ì‚¬ì› b : ìƒì‚¬
 WHERE a.manager_id = b.employee_id;
 
--- °èÃşÇü ±¸Á¶ ¿À¸§, ³»¸²
-SELECT a.employee_id, a.first_name AS "»ç¿ø",
-    a.manager_id as "»ç¿øÀÇ »ó»ç", b.employee_id,
-    b.first_name as "»ó»ç"
+-- ê³„ì¸µí˜• êµ¬ì¡° ì˜¤ë¦„, ë‚´ë¦¼
+SELECT a.employee_id, a.first_name AS "ì‚¬ì›",
+    a.manager_id as "ì‚¬ì›ì˜ ìƒì‚¬", b.employee_id,
+    b.first_name as "ìƒì‚¬"
 FROM employees a, employees b
 WHERE a.manager_id = b.employee_id(+)
--- CONNECT BY PRIOR a.manager_id = a.employee_id;  -- »óÇâ½Ä
-CONNECT BY a.manager_id = PRIOR a.employee_id;  -- ÇÏÇâ½Ä
+-- CONNECT BY PRIOR a.manager_id = a.employee_id;  -- ìƒí–¥ì‹
+CONNECT BY a.manager_id = PRIOR a.employee_id;  -- í•˜í–¥ì‹

@@ -1,29 +1,29 @@
 
--- Å×ÀÌºí Ãß°¡
+-- í…Œì´ë¸” ì¶”ê°€
 CREATE TABLESPACE TABLESPACE2
 DATAFILE 'C:\TEST\TEST_TBS1_02.DBF' SIZE 10M
-AUTOEXTEND ON NEXT 1M MAXSIZE UNLIMITED -- Ãß°¡µÇ´Â ¿ë·®
-LOGGING                                 -- ·Î±ëÀ» »ç¿ë
-EXTENT MANAGEMENT LOCAL AUTOALLOCATE    -- ·ÎÄÃ
-BLOCKSIZE 8K                            -- BLOCK Å©±â 8K
+AUTOEXTEND ON NEXT 1M MAXSIZE UNLIMITED -- ì¶”ê°€ë˜ëŠ” ìš©ëŸ‰
+LOGGING                                 -- ë¡œê¹…ì„ ì‚¬ìš©
+EXTENT MANAGEMENT LOCAL AUTOALLOCATE    -- ë¡œì»¬
+BLOCKSIZE 8K                            -- BLOCK í¬ê¸° 8K
 SEGMENT SPACE MANAGEMENT AUTO
 FLASHBACK ON;  
 
--- TABLE SPACE ¼öÁ¤
--- ½ºÆäÀÌ½º¸íÀ» ¼öÁ¤
+-- TABLE SPACE ìˆ˜ì •
+-- ìŠ¤íŽ˜ì´ìŠ¤ëª…ì„ ìˆ˜ì •
 ALTER TABLESPACE TABLESPACE2
 RENAME TO TB_TEST_NEW;
 
--- µ¥ÀÌÅÍ ÆÄÀÏÀÇ ¿ë·®À» ¼öÁ¤
+-- ë°ì´í„° íŒŒì¼ì˜ ìš©ëŸ‰ì„ ìˆ˜ì •
 ALTER DATABASE
 DATAFILE 'C:\TEST\TEST_TBS1_02.DBF' RESIZE 7M;
 
---Å×ÀÌºí ½ºÆäÀÌ½º »èÁ¦
+--í…Œì´ë¸” ìŠ¤íŽ˜ì´ìŠ¤ ì‚­ì œ
 DROP TABLESPACE TB_TEST_NEW
 INCLUDING CONTENTS AND DATAFILES
 CASCADE CONSTRAINTS;
 
--- TABLESPACE¸¦ ÁöÁ¤ÇØ¼­ »ý¼º
+-- TABLESPACEë¥¼ ì§€ì •í•´ì„œ ìƒì„±
 -- TABLE CREATE
 CREATE TABLE TB_TEST01(
     COL_01 VARCHAR2(10),
@@ -41,7 +41,7 @@ CREATE TABLE TB_TEST02(
 );
 
 
--- TABLE COPY : µ¥ÀÌÅÍ¸¦ Æ÷ÇÔ
+-- TABLE COPY : ë°ì´í„°ë¥¼ í¬í•¨
 DROP TABLE TB_TEST03;
 
 CREATE TABLE TB_TEST03
@@ -49,7 +49,7 @@ AS
 SELECT employee_id, salary, first_name
 FROM employees;
 
--- TABLE COPY : µ¥ÀÌÅÍ ¹ÌÆ÷ÇÔ (¼º¸³µÇÁö¾Ê´Â Á¶°ÇÀÏ ½Ã)
+-- TABLE COPY : ë°ì´í„° ë¯¸í¬í•¨ (ì„±ë¦½ë˜ì§€ì•ŠëŠ” ì¡°ê±´ì¼ ì‹œ)
 CREATE TABLE TB_TEST04
 AS
 SELECT *
@@ -70,74 +70,74 @@ WHERE e.department_id = d.department_id;
     
     Data - insert, delete , select, update
 */
--- Å×ÀÌºí ¼öÁ¤ : Å×ÀÌºí¸í º¯°æ
+-- í…Œì´ë¸” ìˆ˜ì • : í…Œì´ë¸”ëª… ë³€ê²½
 ALTER TABLE TB_TEST04
 RENAME
 TO
 TB_TEST99;
 
--- Å×ÀÌºí ¼öÁ¤ : ´ÜÀÏ ÄÃ·³ Ãß°¡
+-- í…Œì´ë¸” ìˆ˜ì • : ë‹¨ì¼ ì»¬ëŸ¼ ì¶”ê°€
 ALTER TABLE TB_TEST99
 ADD
 COL_NEW1 VARCHAR2(30);
 
--- ´ÙÁß ÄÃ·³ Ãß°¡
+-- ë‹¤ì¤‘ ì»¬ëŸ¼ ì¶”ê°€
 ALTER TABLE TB_TEST99
 ADD
 (COL_NEW2 NUMBER, COL_NEW3 DATE);
 
--- ´ÜÀÏ ÄÃ·³ ¼öÁ¤
+-- ë‹¨ì¼ ì»¬ëŸ¼ ìˆ˜ì •
 ALTER TABLE TB_TEST99
 MODIFY
 COL_NEW1 VARCHAR2(20);
 
--- ´ÙÁß ÄÃ·³ ¼öÁ¤
+-- ë‹¤ì¤‘ ì»¬ëŸ¼ ìˆ˜ì •
 ALTER TABLE TB_TEST99
 MODIFY
 (COL_NEW1 VARCHAR2(20), COL_NEW3 VARCHAR2(10));
 
--- »èÁ¦ : ´ÜÀÏ ÄÃ·³ »èÁ¦
+-- ì‚­ì œ : ë‹¨ì¼ ì»¬ëŸ¼ ì‚­ì œ
 ALTER TABLE TB_TEST99
 DROP
 COLUMN COL_NEW;
 
--- »èÁ¦ : ´ÙÁß ÄÃ·³ »èÁ¦
+-- ì‚­ì œ : ë‹¤ì¤‘ ì»¬ëŸ¼ ì‚­ì œ
 ALTER TABLE TB_TEST99
 DROP
 (COL_NEW2, COL_NEW3);
 
--- ÄÃ·³ ¸í ¼öÁ¤ 
+-- ì»¬ëŸ¼ ëª… ìˆ˜ì • 
 ALTER TABLE TB_TEST99
 RENAME 
 COLUMN 
 DEPARTMENT_ID TO DEPTNO;
 
--- Å×ÀÌºí »èÁ¦
+-- í…Œì´ë¸” ì‚­ì œ
 DROP TABLE TB_TEST01;
 DROP TABLE TB_TEST02;
 DROP TABLE TB_TEST03;
 
--- ÈÞÁöÅë ºñ¿ì±â
+-- íœ´ì§€í†µ ë¹„ìš°ê¸°
 PURGE RECYCLEBIN;
 
 -- DATA INSERT
 INSERT INTO TB_TEST99(DEPTNO, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
-VALUES(100, '±âÈ¹ºÎ', 20, 200);
+VALUES(100, 'ê¸°íšë¶€', 20, 200);
 
 INSERT INTO TB_TEST99(DEPTNO, DEPARTMENT_NAME)
-VALUES(101, '°ü¸®ºÎ' );
+VALUES(101, 'ê´€ë¦¬ë¶€' );
 
 INSERT INTO TB_TEST99
-VALUES(102, '¿µ¾÷ºÎ', 45, 320);
+VALUES(102, 'ì˜ì—…ë¶€', 45, 320);
 
-INSERT INTO TB_TEST99(DEPTNO, MANAGER_ID, LOCATION_ID , DEPARTMENT_NAME)   --ÁÁÀº ¹æ¹ýÀº ¾Æ´Ï´Ù.
-VALUES('103', '65', '220', 'ÀÎ»çºÎ');
+INSERT INTO TB_TEST99(DEPTNO, MANAGER_ID, LOCATION_ID , DEPARTMENT_NAME)   --ì¢‹ì€ ë°©ë²•ì€ ì•„ë‹ˆë‹¤.
+VALUES('103', '65', '220', 'ì¸ì‚¬ë¶€');
 
 SELECT * FROM tb_test99;
 
 -- DATA DELETE
 DELETE FROM tb_test99
-WHERE department_name = 'ÀÎ»çºÎ';
+WHERE department_name = 'ì¸ì‚¬ë¶€';
 
 DELETE FROM tb_test99
 WHERE manager_id IS NULL;
@@ -145,8 +145,9 @@ WHERE manager_id IS NULL;
 -- DATA UPDATE
 UPDATE tb_test99
 SET manager_id = 70
-WHERE department_name = '¿µ¾÷ºÎ';
+WHERE department_name = 'ì˜ì—…ë¶€';
 
 UPDATE tb_test99
 SET manager_id = 30, location_id = 150
 WHERE deptno = 100;
+                                       

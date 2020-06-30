@@ -30,8 +30,9 @@ DBConnection.Class
     }
   
   
- * Class.forName() 을 이용해서 드라이버 로드하는 initConnection() 메소드. 
- * getConnection() 을 이용해서 URI와 SQL Developer의 hr의 id와 pasword. 연결해준다고 생각하면 편함.
+ * Class.forName() : 드라이버 로드하는 initConnection() 메소드. 
+ * getConnection() : URI와 SQL Developer의 hr의 id와 pasword. 연결해준다고 생각하면 편함.
+ * 공통으로 이용하는 Class
  
  ----------------------------------------------
  DBClose.Class
@@ -59,6 +60,8 @@ DBConnection.Class
   
   * DBClose,DBConnection 클래스는 어떤 Query 함수를 적용하던간에 공통적인 값이 적용됨. 그래서 메소드가 전부 static임.
   * close 메소드는 변수들이 null 이외의 값을 얻으면 닫아주는 역할을 함.
+  * 공통으로 이용하는 Class
+  
 -----------------------------------------------
 Dto Class
 ===============================================
@@ -120,6 +123,7 @@ Dto Class
     }
  
  * DB 조작 및 담당하는 Class (setter getter Override constructor)
+ * 공통으로 이용하는 Class
 ------------------------------------------------------------------
  SelectTest.Class
  =================================================================

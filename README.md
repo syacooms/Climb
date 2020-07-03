@@ -12,6 +12,7 @@
 
 -------------------------
 
+* 강의
 * [__생활코딩__](https://opentutorials.org/course/1)
 * [__poiemaweb__](https://poiemaweb.com/)
 

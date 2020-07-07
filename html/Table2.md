@@ -46,7 +46,7 @@ Table2
 
 
 -----------------
-* iframe : webpage 안에 webpage
+* iframe : 웹페이지 안에 웹페이지
 
 
 ![iframe 주소 불러오기](https://user-images.githubusercontent.com/31100061/86728072-0bc75a00-c067-11ea-82a6-598dabba3a28.jpg)

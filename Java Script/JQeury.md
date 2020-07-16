@@ -37,10 +37,10 @@ JQeury
 * 자바스크립트단에서 생성한다.
 
 
-     $(this).hide("text");     -> this(자기자신)
-     $("p").hide("text");      -> <p> 'tag'
-     $(".demo").hide("text");	 -> id
-     $("#demo").hide("text");	 -> class
+                 $(this).hide("text");     -> this(자기자신)
+                 $("p").hide("text");      -> <p> 'tag'
+                 $(".demo").hide("text");	 -> id
+                 $("#demo").hide("text");	 -> class
  
  
 -----------------------------------------------------------------
